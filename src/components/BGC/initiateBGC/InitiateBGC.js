@@ -1,6 +1,6 @@
 import useForceUpdate from "use-force-update";
 import { toast, ToastContainer } from "react-toastify";
-import { Button, Checkbox, Dropdown, Icon, Table } from "semantic-ui-react";
+import { Button, Dropdown, Icon, Table } from "semantic-ui-react";
 import Preview from "./Preview";
 import Search from "../../searchForCandidate/Search";
 import { useState } from "react";
@@ -13,7 +13,7 @@ const IntiateBGC = () => {
     { key: "Credit", text: "Credit", value: "Credit" },
   ];
 
-  const [drop, setdrop] = useState();
+  const [setdrop] = useState();
   const [addCandidateDataForTable, setAddCandidateDataForTable] = useState([]);
   const [states] = useState({ options });
   const forceUpdate = useForceUpdate();

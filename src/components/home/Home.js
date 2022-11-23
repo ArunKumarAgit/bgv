@@ -11,6 +11,7 @@ const Home = () => {
       <img
         onClick={navTo}
         src="https://cdn.dribbble.com/users/656195/screenshots/17460839/media/9ceca4163ec30ed578ed9a39f0eeb4ca.png"
+        alt="arun"
       />
       <Footer />
     </>

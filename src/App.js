@@ -3,7 +3,7 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import Sidebar from "./components/Sidebar";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import BGCComponent from "./components/BGC/BGCComponent";
 import InitiateBGC from "./components/BGC/initiateBGC/InitiateBGC";
 // import Table from './components/table/Table';

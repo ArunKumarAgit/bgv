@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input, Select } from "semantic-ui-react";
 import Tables from "../table/Table";
