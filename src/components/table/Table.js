@@ -31,7 +31,7 @@ function Table(props) {
 
   const [userData, setUserData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3004/candidateData/")
+    fetch(process.env.REACT_APP_API1)
       .then(res => res.json())
       .then(data => setUserData(data));
   }, []);
