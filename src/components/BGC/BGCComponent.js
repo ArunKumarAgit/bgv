@@ -34,7 +34,7 @@ function BGCComponent() {
   const navigate = useNavigate();
   const addBGCComponent = e => {
     e.preventDefault();
-    navigate("/addbgc");
+    navigate("/bgc/reqDetailComp/addbgc");
   };
   let status = e => {
     e.target.innerText === "All"

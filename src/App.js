@@ -18,8 +18,8 @@ function App() {
         <Route path="/bgc" element={<BGCComponent />} />
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/addbgc" element={<InitiateBGC />} />
-        <Route path="/reqDetailComp" element={<DetailComponent />} />
+        <Route path="/bgc/reqDetailComp/addbgc" element={<InitiateBGC />} />
+        <Route path="/bgc/reqDetailComp" element={<DetailComponent />} />
       </Routes>
     </>
   );

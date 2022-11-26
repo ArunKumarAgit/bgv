@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ColumnDirective, ColumnsDirective } from "@syncfusion/ej2-react-grids";
@@ -10,17 +11,24 @@ import {
   Sort,
 } from "@syncfusion/ej2-react-grids";
 import ExportExcel from "../exportData/ExportExcel";
+// import { toast } from "react-toastify";
 
 function Table(props) {
+  const navigate = useNavigate();
+  const Dynamic = {
+    companyName: "company Name",
+    name: "Name",
+    emailId: "email Id",
+    id: "ID",
+    bgcStatus: "bgc Status",
+  };
   const [filterOptions] = useState({ type: "Menu" });
 
   const [pageOptions] = useState({
     pageSize: 5,
     pageSizes: true,
   });
-  console.log(props);
 
-  let linkData = useRef();
   const [userData, setUserData] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3004/candidateData/")
@@ -43,20 +51,44 @@ function Table(props) {
     );
   });
 
+  const candidateNameData = key => {
+    console.log(key);
+    let nameOfCandidate = key.target.text;
+    console.log(nameOfCandidate);
+    navigate("reqDetailComp", { state: { id: 1, name: "arun" } });
+    alert(nameOfCandidate);
+  };
+  const test = key => {
+    console.log(key);
+    // navigate("/reqDetailComp", { params: { post: "postText" } });
+    navigate("reqDetailComp", {
+      user: {
+        id: "jane",
+        firstName: "Jane",
+        lastName: "Done",
+        age: 25,
+      },
+    });
+  };
   const addBGCComponent = namesof => {
-    console.log(namesof);
     return (
-      <div>
-        <Link to="/reqDetailComp">{namesof.name}</Link>
-      </div>
+      <Link
+        onClick={candidateNameData}
+        to={{
+          pathname: "reqDetailComp",
+        }}
+      >
+        {namesof.name}
+      </Link>
     );
   };
-  console.log(linkData);
-  console.log(data);
+
   return (
     <>
       <ExportExcel excelData={data} fileName={"ExcelExport"} />
+
       <GridComponent
+        rowSelected={test}
         dataSource={data}
         filterSettings={filterOptions}
         allowFiltering={true}
@@ -68,17 +100,42 @@ function Table(props) {
         {/* {datas} */}
         <ColumnsDirective>
           <ColumnDirective
+            headerText={Dynamic.name}
             template={data => addBGCComponent(data)}
             field="name"
             width="100"
             textAlign="Right"
           />
-          <ColumnDirective field="emailId" width="100" textAlign="Right" />
-          <ColumnDirective field="phone" width="100" textAlign="Right" />
-          <ColumnDirective field="companyName" width="100" textAlign="Right" />
-          <ColumnDirective field="id" width="100" textAlign="Right" />
+          <ColumnDirective
+            headerText={Dynamic.emailId}
+            field="emailId"
+            width="100"
+            textAlign="Right"
+          />
+          <ColumnDirective
+            headerText={Dynamic.phone}
+            field="phone"
+            width="100"
+            textAlign="Right"
+          />
+          <ColumnDirective
+            headerText={Dynamic.companyName}
+            field="companyName"
+            width="100"
+            textAlign="Right"
+          />
+          <ColumnDirective
+            headerText={Dynamic.id}
+            field="id"
+            width="100"
+            textAlign="Right"
+          />
 
-          <ColumnDirective field="bgcStatus" width="100" />
+          <ColumnDirective
+            headerText={Dynamic.bgcStatus}
+            field="bgcStatus"
+            width="100"
+          />
         </ColumnsDirective>
 
         <Inject services={[Filter, Page, Sort]} />
